@@ -1,0 +1,12 @@
+.card {
+  position: relative;
+  margin-bottom: 48px;
+  max-width: 860px;
+}
+
+.button {
+  position: absolute;
+  z-index: 99;
+  top: 8px;
+  right: 8px;
+}

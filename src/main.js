@@ -1,5 +1,3 @@
-
-
 import 'babel-polyfill';
 import 'whatwg-fetch';
 
@@ -8,9 +6,11 @@ import ReactDOM from 'react-dom';
 import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
 
-import store from './store';
 import router from './router';
 import history from './history';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
 
 let routes = require('./routes.json').default; // Loaded with utils/routes-loader.js
 const container = document.getElementById('container');
@@ -31,6 +31,7 @@ function render(location) {
 // For more information visit https://github.com/ReactJSTraining/history/tree/master/docs#readme
 history.listen(render);
 render(history.location);
+
 
 // Eliminates the 300ms delay between a physical tap
 // and the firing of a click event on mobile browsers

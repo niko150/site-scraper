@@ -1,7 +1,10 @@
-
-
+.main {
+  padding-top: 35px;
+}
 .content {
   margin: 0 auto;
+  margin-bottom: 2em;
   max-width: 1000px;
   width: 100%;
 }
+
