@@ -1,12 +1,13 @@
 import React from 'react';
-import Layout from '../../../components/Layout';
-import s from './styles.css';
-import AddSiteForm from '../../../components/AddSiteForm/AddSiteForm';
+import Layout from '../Layout/Layout';
+import s from './AddSite.css';
+import AddSiteForm from './AddSiteForm';
 import {connect} from 'react-redux';
-import * as siteActions from '../../actions/siteActions';
+import * as siteActions from '../../src/actions/siteActions';
 import {bindActionCreators} from 'redux';
+import {Snackbar} from 'react-mdl';
 
-class AddPage extends React.Component {
+class AddSite extends React.Component {
 
   constructor(props, context) {
 
@@ -14,11 +15,14 @@ class AddPage extends React.Component {
 
     this.state = {
       site: Object.assign({}, this.props.site),
-      errors: {}
+      errors: {},
+      saving: false,
+      isToastActive: false
     };
 
     this.updateSiteState = this.updateSiteState.bind(this);
     this.addSite = this.addSite.bind(this);
+
 
   }
 
@@ -49,24 +53,29 @@ class AddPage extends React.Component {
 
   addSite(e) {
 
+    this.setState({saving: true});
     e.preventDefault();
-    this.props.actions.addSite(this.state.site);
+    this.props.actions.addSite(this.state.site).then(() => {
+      this.setState({saving: false});
+      this.handleShowSnackbar();
+    }).catch((error) => {
+      this.setState({saving: false});
+    })
 
   }
 
   render() {
     return (
-      <Layout className={s.content}>
-
+      <section className={`${s.container}`}>
         <AddSiteForm
           onChange={this.updateSiteState}
           onSubmit={this.addSite}
           site={this.state.site}
           error={this.state.errors}
+          saving={this.state.saving}
 
         />
-
-      </Layout>
+      </section>
     );
   }
 
@@ -92,4 +101,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(AddPage);
+export default connect(mapStateToProps,mapDispatchToProps)(AddSite);

@@ -6,6 +6,7 @@ import Sites from '../../../components/Sites/SiteList';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as siteActions from '../../actions/siteActions';
+import AddSite from '../../../components/AddSite/AddSite';
 
 class HomePage extends React.Component {
 
@@ -42,7 +43,7 @@ class HomePage extends React.Component {
     return (
       <Layout className={s.content}>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-
+        <AddSite />
         <Sites sites={sites}/>
 
 

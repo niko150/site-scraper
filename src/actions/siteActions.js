@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import SiteScraperAPI from '../helpers/SiteScraperAPI';
-import {startAjaxCall} from './ajaxStatusActions';
+import {startAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 
 export function loadSitesSuccess(sites) {
@@ -28,6 +28,7 @@ export function loadSites() {
       dispatch(loadSitesSuccess(sites));
 
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
 
@@ -44,6 +45,7 @@ export function addSite(site) {
       dispatch(addedSiteSuccess(site));
 
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
 
