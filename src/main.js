@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 import router from './router';
 import history from './history';
-import {loadSites} from './actions/siteAction';
+import {loadSites} from './actions/siteActions';
 import configureStore from './store/configureStore';
 
 // Setup the Store

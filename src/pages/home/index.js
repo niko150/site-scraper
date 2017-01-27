@@ -5,7 +5,7 @@ import { title, html } from './index.md';
 import Sites from '../../../components/Sites/SiteList';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as siteAction from '../../actions/siteAction';
+import * as siteActions from '../../actions/siteActions';
 
 class HomePage extends React.Component {
 
@@ -63,7 +63,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
 
   return {
-    actions: bindActionCreators(siteAction, dispatch)
+    actions: bindActionCreators(siteActions, dispatch)
   }
 
 }
