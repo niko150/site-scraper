@@ -10,6 +10,9 @@ export default function siteReducer(state = [], action) {
         Object.assign({}, action.site)
       ];
 
+    case types.LOAD_SITES_SUCCESS:
+      return action.sites;
+
     default:
       return state;
 
