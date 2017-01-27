@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import SiteScraperAPI from '../helpers/SiteScraperAPI';
-
+import {startAjaxCall} from './ajaxStatusActions';
 
 
 export function loadSitesSuccess(sites) {
@@ -19,6 +19,9 @@ export function addedSiteSuccess(site) {
 
 export function loadSites() {
   return function (dispatch) {
+
+    dispatch(startAjaxCall());
+
     return SiteScraperAPI.getAllSites().then(res => {
 
       let sites = res.body.data;
@@ -34,6 +37,7 @@ export function loadSites() {
 
 export function addSite(site) {
   return function (dispatch, getState) {
+    dispatch(startAjaxCall());
     return SiteScraperAPI.addSite(site).then(res => {
 
       let site = res.body.data[0];

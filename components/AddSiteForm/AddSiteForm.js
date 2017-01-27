@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {Textfield, Grid, Cell,Checkbox, Button, ProgressBar} from 'react-mdl';
+import {Textfield, Grid, Cell,Checkbox, Button} from 'react-mdl';
 import layout_css from '../Layout/Layout.css';
 import s from './AddSiteForm.css';
 import {connect} from 'react-redux';
@@ -10,11 +10,7 @@ const AddSiteForm = ({site, onSubmit, onChange, loading, errors}) => {
 
       <form className={`${layout_css.content}`} method="post" action="javascript:void(0)" onSubmit={onSubmit}>
 
-        <Grid noSpacing>
-          <Cell col={12}>
-            <ProgressBar indeterminate />
-          </Cell>
-        </Grid>
+
         <Grid>
           <Cell col={2} />
           <Cell col={8}>

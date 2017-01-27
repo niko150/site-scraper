@@ -1,13 +1,18 @@
-
-
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Header from './Header';
 import Footer from '../Footer';
 import s from './Layout.css';
+import {connect} from 'react-redux';
 
 class Layout extends React.Component {
 
+  constructor(props, context) {
+
+    super(props, context);
+
+
+  }
   static propTypes = {
     className: PropTypes.string,
   };
@@ -21,12 +26,13 @@ class Layout extends React.Component {
   }
 
   render() {
+
     return (
       <div className="mdl-layout mdl-js-layout" ref={node => (this.root = node)}>
         <div className="mdl-layout__inner-container">
-          <Header />
+          <Header loading={this.props.loading}/>
           <main className={`mdl-layout__content ${s.main}`}>
-            <div {...this.props} className={cx(s.content, this.props.className)} />
+            {this.props.children}
             <Footer />
           </main>
         </div>
@@ -35,4 +41,11 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout;
+function mapStateToProps(state, ownProps) {
+
+  return {
+    loading: state.ajaxCallsInProgress > 0
+  };
+
+}
+export default connect(mapStateToProps)(Layout);
