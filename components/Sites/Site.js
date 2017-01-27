@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import s from './Site.css';
 
 const Site = ({site}) =>  {
@@ -24,6 +24,10 @@ const Site = ({site}) =>  {
 
     );
 
+};
+
+Site.propTypes = {
+  site: PropTypes.object.isRequired
 };
 
 export default Site;

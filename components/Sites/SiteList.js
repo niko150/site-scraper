@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Site from './Site';
 
 const SitesList = ({sites}) => {
@@ -15,5 +15,9 @@ const SitesList = ({sites}) => {
 
 };
 
+
+SitesList.propTypes = {
+  sites: PropTypes.array.isRequired
+};
 
 export default SitesList;

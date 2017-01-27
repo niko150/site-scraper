@@ -9,6 +9,12 @@ class SiteScraperAPI {
 
   }
 
+  static addSite(site) {
+
+    return request.post('http://localhost:8080/v1/sites/').send(site);
+
+  }
+
 }
 
 export default SiteScraperAPI;

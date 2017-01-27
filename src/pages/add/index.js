@@ -18,6 +18,7 @@ class AddPage extends React.Component {
     };
 
     this.updateSiteState = this.updateSiteState.bind(this);
+    this.addSite = this.addSite.bind(this);
 
   }
 
@@ -35,7 +36,6 @@ class AddPage extends React.Component {
 
       case 'checkbox':
         site[field] = e.target.checked;
-
         break;
 
       default:
@@ -47,14 +47,23 @@ class AddPage extends React.Component {
 
   }
 
+  addSite(e) {
+
+    e.preventDefault();
+    this.props.actions.addSite(this.state.site);
+
+  }
+
   render() {
     return (
       <Layout className={s.content}>
 
         <AddSiteForm
           onChange={this.updateSiteState}
+          onSubmit={this.addSite}
           site={this.state.site}
           error={this.state.errors}
+
         />
 
       </Layout>
@@ -66,7 +75,7 @@ class AddPage extends React.Component {
 function mapStateToProps(state, ownProps) {
   let site = {
     url: '',
-    entire_site: true
+    entire_site: false
   };
   return {
     site: site
