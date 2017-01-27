@@ -35,7 +35,7 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    document.title = title;
+    // document.title = title;
   }
 
   render() {
