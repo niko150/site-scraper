@@ -12,8 +12,8 @@ export default function siteReducer(state = [], action) {
       ];
 
     case types.LOAD_SITES_SUCCESS:
-      return action.sites;
 
+      return action.sites;
 
     default:
       return state;

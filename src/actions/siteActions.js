@@ -18,11 +18,14 @@ export function addedSiteSuccess(site) {
 }
 
 export function loadSites() {
-  return function (dispatch) {
+  return function (dispatch, getState) {
 
     dispatch(startAjaxCall());
 
-    return SiteScraperAPI.getAllSites().then(res => {
+    let {filters} = getState();
+
+    console.log(filters);
+    return SiteScraperAPI.getAllSites(filters).then(res => {
 
       let sites = res.body.data;
       dispatch(loadSitesSuccess(sites));

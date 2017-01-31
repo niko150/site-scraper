@@ -3,9 +3,11 @@ import request from 'superagent';
 class SiteScraperAPI {
 
 
-  static getAllSites() {
+  static getAllSites(query = {}) {
 
-    return request.get('http://localhost:8080/v1/sites/');
+    console.log(query);
+    return request.get('http://localhost:8080/v1/sites/').query(query);
+
 
   }
 
