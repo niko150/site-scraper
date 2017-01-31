@@ -44,7 +44,7 @@ class HomePage extends React.Component {
       <Layout className={s.content}>
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <Filters/>
-        <AddSite />
+        {/*<AddSite />*/}
         <Sites sites={sites}/>
 
 

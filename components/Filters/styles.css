@@ -1,3 +1,15 @@
 .per_page_text {
   display: inline-block;
 }
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.search_box {
+  width: 100%;
+}
+
+

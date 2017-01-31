@@ -25,6 +25,7 @@ export function loadSites() {
     let {filters} = getState();
 
     console.log(filters);
+    console.log(filters);
     return SiteScraperAPI.getAllSites(filters).then(res => {
 
       let sites = res.body.data;
