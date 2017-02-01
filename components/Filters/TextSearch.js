@@ -9,6 +9,7 @@ const TextSearch = ({onChange, className}) => {
         label="Search"
         className={className}
         name="url__contains"
+
       />
     );
 };

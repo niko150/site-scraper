@@ -5,9 +5,7 @@ class SiteScraperAPI {
 
   static getAllSites(query = {}) {
 
-    console.log(query);
     return request.get('http://localhost:8080/v1/sites/').query(query);
-
 
   }
 

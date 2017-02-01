@@ -6,6 +6,8 @@ import s from './styles.css';
 import {connect} from 'react-redux';
 import {loadSites} from '../../src/actions/siteActions';
 import {updateFilters} from '../../src/actions/filterActions';
+import {debounce} from 'throttle-debounce';
+import history from '../../src/history';
 
 import {bindActionCreators} from 'redux';
 
@@ -33,11 +35,12 @@ class Filters extends React.Component {
       searching: false
     };
 
-    this.updateFiltersState = this.updateFiltersState.bind(this);
+    this.updateFiltersState = debounce(500,this.updateFiltersState);
 
   }
 
   updateFiltersState(e) {
+
 
     const field = e.target.name;
     let filters = this.state.filters;
@@ -49,10 +52,35 @@ class Filters extends React.Component {
     });
 
     this.props.actions.updateFilters(this.state.filters);
+    this.props.actions.loadSites().then((data) => {
+      let query = this.encodeQueryToURI(this.state.filters);
+      let pathname = history.location.pathname;
 
-    this.props.actions.loadSites();
+
+      history.push({
+        pathname: pathname,
+        search: query,
+      });
+
+    });
 
   }
+
+  encodeQueryToURI(query) {
+
+    return Object.keys(query).map((key) => {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(query[key]);
+    }).join('&');
+
+  }
+
+  handleChange = e => {
+    // React event weirdness requires storing
+    // the synthetic event
+    e.persist();
+    this.updateFiltersState(e);
+
+  };
 
   render() {
     return (
@@ -60,11 +88,11 @@ class Filters extends React.Component {
         <Grid noSpacing>
 
           <Cell col={7} >
-            <TextSearch onChange={this.updateFiltersState} className={`${s.search_box}`}/>
+            <TextSearch onChange={this.handleChange} className={`${s.search_box}`}/>
           </Cell>
 
           <Cell col={4} offset={1} align="middle">
-            <Perpage onChange={this.updateFiltersState}/>
+            <Perpage onChange={this.handleChange} />
           </Cell>
 
         </Grid>
