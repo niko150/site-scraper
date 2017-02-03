@@ -4,7 +4,7 @@ export default function siteReducer(state = [], action) {
 
   switch (action.type) {
 
-    case types.ADDED_SITE_SUCCESS:
+    case types.PROCESSED_SITE_SUCCESSFUL:
 
       return [
         ...state,
@@ -21,3 +21,5 @@ export default function siteReducer(state = [], action) {
   }
 
 }
+
+

@@ -55,11 +55,16 @@ class AddSite extends React.Component {
 
     this.setState({saving: true});
     e.preventDefault();
-    this.props.actions.addSite(this.state.site).then(() => {
+
+    this.props.actions.addSite(this.state.site).then((data) => {
+
       this.setState({saving: false});
-      this.handleShowSnackbar();
+
+
     }).catch((error) => {
+
       this.setState({saving: false});
+
     })
 
   }

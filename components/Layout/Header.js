@@ -5,11 +5,11 @@ import Link from '../Link';
 import s from './Header.css';
 import {Grid, Cell, ProgressBar} from 'react-mdl';
 
-const Header  = ({loading}) => {
+const Header  = ({show_progress_bar}) => {
 
   return (
     <section>
-      {loading &&
+      {show_progress_bar &&
       <Grid noSpacing>
         <Cell col={12}>
           <ProgressBar indeterminate className={`${s.loading_bar}`}/>
@@ -23,7 +23,7 @@ const Header  = ({loading}) => {
             Website Scraper
           </Link>
           <div className="mdl-layout-spacer"></div>
-          <Navigation />
+
         </div>
       </header>
     </section>

@@ -38,6 +38,23 @@ export function loadSites() {
 
 }
 
+export function checkSiteProcess(site_id) {
+
+  return function (dispatch, getState) {
+
+    return SiteScraperAPI.getSite(site_id).then(res => {
+
+      let site = res.body.data;
+      console.log(site);
+
+    }).catch(error => {
+
+    });
+
+  }
+
+}
+
 export function addSite(site) {
   return function (dispatch, getState) {
     dispatch(startAjaxCall());

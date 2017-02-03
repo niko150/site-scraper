@@ -15,6 +15,12 @@ class SiteScraperAPI {
 
   }
 
+  static getSite(site_id) {
+
+    return request.get('http://localhost:8080/v1/sites/' + site_id);
+
+  }
+
 }
 
 export default SiteScraperAPI;

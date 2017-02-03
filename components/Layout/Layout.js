@@ -30,7 +30,7 @@ class Layout extends React.Component {
     return (
       <div className="mdl-layout mdl-js-layout" ref={node => (this.root = node)}>
         <div className="mdl-layout__inner-container">
-          <Header loading={this.props.loading}/>
+          <Header show_progress_bar={this.props.show_progress_bar}/>
           <main className={`mdl-layout__content ${s.main}`}>
             {this.props.children}
             <Footer />
@@ -44,7 +44,7 @@ class Layout extends React.Component {
 function mapStateToProps(state, ownProps) {
 
   return {
-    loading: state.ajaxCallsInProgress > 0
+    show_progress_bar: state.ajaxCallsInProgress > 0 || state.sites_in_process.length > 0,
   };
 
 }
