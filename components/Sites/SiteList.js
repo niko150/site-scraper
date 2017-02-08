@@ -8,7 +8,7 @@ const SitesList = ({sites}) => {
     <section>
       {sites.map(site =>
         <Site key={site.id} site={site}/>
-      )};
+      )}
     </section>
 
   );

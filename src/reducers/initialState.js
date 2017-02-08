@@ -8,6 +8,6 @@ export default {
     __processed: true
   },
   site: {},
-  site_in_process: {},
+  site_in_process: false,
   numAjaxCallsInProgress: 0
 }

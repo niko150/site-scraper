@@ -11,6 +11,7 @@ export function loadSitesSuccess(sites) {
 }
 
 export function addedSiteSuccess(site) {
+
   return {
     type: types.ADDED_SITE_SUCCESS,
     site

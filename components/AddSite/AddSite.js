@@ -15,6 +15,7 @@ class AddSite extends React.Component {
 
     this.state = {
       site: Object.assign({}, this.props.site),
+      site_in_process: this.props.site_in_process,
       errors: {},
       saving: false,
       isToastActive: false
@@ -58,7 +59,15 @@ class AddSite extends React.Component {
 
     this.props.actions.addSite(this.state.site).then((data) => {
 
-      this.setState({saving: false});
+
+      this.setState({site_in_process: this.props.site_in_process});
+
+
+      let statusCheck = setInterval(() => {
+
+        this.props.actions.checkSiteProcess(this.state.site_in_process.id);
+
+      }, 1000);
 
 
     }).catch((error) => {
@@ -91,8 +100,11 @@ function mapStateToProps(state, ownProps) {
     url: '',
     entire_site: false
   };
+
+
   return {
-    site: site
+    site: site,
+    site_in_process: state.site_in_process
   }
 
 }

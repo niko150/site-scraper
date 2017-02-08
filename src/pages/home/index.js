@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as siteActions from '../../actions/siteActions';
 import AddSite from '../../../components/AddSite/AddSite';
-import Filters from '../../../components/Filters/Filters';
+
 class HomePage extends React.Component {
 
   // static propTypes = {
@@ -43,7 +43,6 @@ class HomePage extends React.Component {
     return (
       <Layout className={s.content}>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-        {/*<Filters/>*/}
         <AddSite />
         <Sites sites={sites}/>
 
