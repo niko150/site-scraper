@@ -65,7 +65,29 @@ class AddSite extends React.Component {
 
       let statusCheck = setInterval(() => {
 
-        this.props.actions.checkSiteProcess(this.state.site_in_process.id);
+        this.props.actions.checkSiteProcess(this.state.site_in_process.id).then((done) => {
+
+
+          if(done) {
+
+            let site = {
+              url: '',
+              entire_site: false
+            };
+
+            clearInterval(statusCheck);
+
+            this.setState({saving: false});
+            this.setState({site: site});
+            this.props.actions.loadSites();
+
+
+          }
+
+
+
+        });
+
 
       }, 1000);
 
@@ -96,6 +118,7 @@ class AddSite extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
+
   let site = {
     url: '',
     entire_site: false

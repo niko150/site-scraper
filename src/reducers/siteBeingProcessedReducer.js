@@ -11,7 +11,7 @@ export default function sitesBeingProcessedReducer(state = initialState.site_in_
 
   } else if (action.type == types.PROCESSED_SITE_ERROR || action.type == types.PROCESSED_SITE_SUCCESSFUL) {
 
-    return {};
+    return false;
 
   }
 

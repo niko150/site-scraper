@@ -18,6 +18,20 @@ export function addedSiteSuccess(site) {
   }
 }
 
+export function siteInProcessSuccess() {
+
+  return {
+    type: types.PROCESSED_SITE_SUCCESSFUL
+  }
+
+}
+
+export function siteInProcessError() {
+  return {
+    type: types.PROCESSED_SITE_ERROR
+  }
+}
+
 export function loadSites() {
   return function (dispatch, getState) {
 
@@ -39,16 +53,33 @@ export function loadSites() {
 
 }
 
+
+
 export function checkSiteProcess(site_id) {
 
   return function (dispatch, getState) {
 
     return SiteScraperAPI.getSite(site_id).then(res => {
 
-      let site = res.body.data;
-      console.log(site);
+      let site = res.body.data[0];
+
+      if(!!site && site.processed) {
+
+        dispatch(siteInProcessSuccess());
+
+        return true;
+
+      } else {
+
+        return false;
+
+      }
+
 
     }).catch(error => {
+
+      dispatch(siteInProcessError());
+      throw(error);
 
     });
 
