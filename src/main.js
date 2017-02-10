@@ -36,7 +36,6 @@ function render(location) {
 // For more information visit https://github.com/ReactJSTraining/history/tree/master/docs#readme
 history.listen(render);
 render(history.location);
-console.log(history);
 
 // Eliminates the 300ms delay between a physical tap
 // and the firing of a click event on mobile browsers

@@ -57,17 +57,18 @@ class AddSite extends React.Component {
     this.setState({saving: true});
     e.preventDefault();
 
+    // Add the site
     this.props.actions.addSite(this.state.site).then((data) => {
 
 
       this.setState({site_in_process: this.props.site_in_process});
 
-
+      // Check for the status
       let statusCheck = setInterval(() => {
 
         this.props.actions.checkSiteProcess(this.state.site_in_process.id).then((done) => {
 
-
+          // Clear the interval once it's done.
           if(done) {
 
             let site = {
@@ -77,6 +78,7 @@ class AddSite extends React.Component {
 
             clearInterval(statusCheck);
 
+            // Update the state and load the sites from the API.
             this.setState({saving: false});
             this.setState({site: site});
             this.props.actions.loadSites();

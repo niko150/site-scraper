@@ -15,13 +15,29 @@ const AddSiteForm = ({site, onSubmit, onChange, saving, errors}) => {
           <Cell col={8}>
             <Grid noSpacing>
               <Cell col={10}>
-                <Textfield label="URL to Scrape" value={site.url} name="url"  floatingLabel onChange={onChange} className={`${s.url_text}`}/>
+                <Textfield
+                  label="URL to Scrape"
+                  value={site.url}
+                  name="url"
+                  floatingLabel
+                  onChange={onChange}
+                  disabled={saving}
+
+                  error="Incorrect URL!"
+                  pattern="https?://.+"
+                  className={`${s.url_text}`}/>
               </Cell>
               <Cell col={1} align="middle" offset={1}>
-                <Checkbox onChange={onChange} checked={site.entire_site} name="entire_site"  label="Recursive" ripple />
+                <Checkbox
+                  onChange={onChange}
+                  checked={site.entire_site}
+                  name="entire_site"
+                  disabled={saving}
+                  label="Recursive"
+                  ripple />
               </Cell>
               <Cell col={12}>
-                <Button raised colored disabled={saving}>{saving ? 'Scraping Site...' : 'Scrape Site'}</Button>
+                <Button raised colored disabled={saving || site.url.length <= 0}>{saving ? 'Scraping Site...' : 'Scrape Site'}</Button>
               </Cell>
 
             </Grid>
