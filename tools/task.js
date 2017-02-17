@@ -9,6 +9,7 @@
  *     Finished 'deploy' in 582ms
  */
 
+
 function run(task, action, ...args) {
   const command = process.argv[2];
   const taskName = command && !command.startsWith('-') ? `${task}:${command}` : task;
@@ -21,3 +22,4 @@ function run(task, action, ...args) {
 
 process.nextTick(() => require.main.exports());
 module.exports = (task, action) => run.bind(undefined, task, action);
+
