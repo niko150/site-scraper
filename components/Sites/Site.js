@@ -29,7 +29,8 @@ const Site = ({site}) =>  {
               <p>Created: {formatData(site.created_at)}</p>
             </div>
             <div className="mdl-card__actions">
-              <a href={site.base_path + site.directory + 'index.html'} target="_blank" className="mdl-button">View Site</a>
+              <a href={site.base_path + site.directory + 'www/index.html'} target="_blank" className="mdl-button">View Site</a>
+              <a href={site.base_path + site.directory + 'archive/site.zip'} target="_blank" className="mdl-button">Download Site</a>
             </div>
           </div>
 
